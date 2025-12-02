@@ -17,7 +17,7 @@ export function toTitleCase(input: string): string {
 
 export function isPalindrome(input: string): boolean {
     input = input.toLowerCase().replace(/[^a-z]/gi, "") // Convert to lowercase and remove anything that isn't a letter
-    let j = input.length - 1; // Get index of last char in input
+    const j = input.length - 1; // Get index of last char in input
     if (input != "") { // Check for empty string
         for (let i = 0; i < input.length; ++i) {
             if (input[i] != input[j - i]) {
