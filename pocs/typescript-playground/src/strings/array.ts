@@ -1,15 +1,15 @@
 export function unique<T>(arr: T[]): T[] {
-    const newArr: T[] = [] // New array to return
-    const seenKeys: string[] = [] // Tracker array for seen items, using stringified item for key
+    const newArr: T[] = []
+    const seenKeys: string[] = []
     for (const item of arr) {
         let key: string
-        const valueType = typeof item // Get typeof item to check if an object
-        if (valueType == "object") { // If object, stringify using JSON.stringify
+        const valueType = typeof item 
+        if (valueType == "object") { 
             key = `${JSON.stringify(item)}`
         } else {
-            key = `${String(item)}` // Else, stringify using String
+            key = `${String(item)}`
         }
-        if (!seenKeys.includes(key)) { // Add to new array if new and add key to keys array, else move on
+        if (!seenKeys.includes(key)) { 
             seenKeys.push(key)
             newArr.push(item)
         }
