@@ -1,5 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "neverConnectToCloud": true,
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
@@ -14,7 +15,6 @@
     ],
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
-  "nxCloudId": "691fa4fcff0a3b1c2e34c14f",
   "plugins": [
     {
       "plugin": "@nx/js/typescript",
