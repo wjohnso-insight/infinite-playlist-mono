@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
+exports[`strings isPalindrome should match snapshot 1`] = `true`;
+
 exports[`strings toTitleCase should match snapshot 1`] = `"Hello World"`;
 
 exports[`strings updateTarget should match snapshot 1`] = `"Put update here: Foo"`;
