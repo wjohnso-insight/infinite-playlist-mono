@@ -2,10 +2,13 @@
   "name": "@infinite-playlist-mono/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "prepare": "husky"
+  },
   "private": true,
-  "dependencies": {},
   "devDependencies": {
+    "@commitlint/cli": "^20.2.0",
+    "@commitlint/config-conventional": "^20.2.0",
     "@eslint/js": "^9.8.0",
     "@nx/esbuild": "22.1.0",
     "@nx/eslint": "22.1.0",
@@ -22,9 +25,11 @@
     "esbuild": "^0.19.2",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^10.0.0",
+    "husky": "^9.1.7",
     "jest": "^30.0.2",
     "jest-environment-node": "^30.0.2",
     "jest-util": "^30.0.2",
+    "lint-staged": "^16.2.7",
     "nx": "22.1.0",
     "prettier": "^2.6.2",
     "ts-jest": "^29.4.0",
