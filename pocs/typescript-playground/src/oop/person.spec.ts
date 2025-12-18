@@ -15,7 +15,7 @@ describe('person', () => {
         })
 
         test('should print greeting with name in console', () => {
-            const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {})
+            const logSpy = jest.spyOn(console, 'log').mockImplementation(() => undefined)
             const person = new Person("John Smith")
             person.greet()
             expect(logSpy).toHaveBeenCalledWith("Hello, my name is John Smith")
