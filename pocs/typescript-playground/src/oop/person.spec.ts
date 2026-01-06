@@ -1,4 +1,15 @@
+import { IPerson } from './person'
 import { Person } from './person'
+
+let sut: IPerson
+
+const getSut = () : IPerson => {
+    return new Person("John Smith")
+}
+
+beforeEach(() => {
+    sut = getSut()
+})
 
 describe('person', () => {
     describe('full name', () => {
