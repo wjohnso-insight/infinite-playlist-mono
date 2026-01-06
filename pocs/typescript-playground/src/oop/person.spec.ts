@@ -14,21 +14,18 @@ beforeEach(() => {
 describe('person', () => {
     describe('full name', () => {
         test('should be defined', () => {
-            const person = new Person("Jessica Smith")
-            expect(person.fullName).toBeDefined()
+            expect(sut.fullName).toBeDefined()
         })
     })
 
     describe('greet', () => {
         test('should be defined', () => {
-            const person = new Person("John Smith")
-            expect(person.greet).toBeDefined()
+            expect(sut.greet).toBeDefined()
         })
 
         test('should print greeting with name in console', () => {
             const logSpy = jest.spyOn(console, 'log').mockImplementation(() => undefined)
-            const person = new Person("John Smith")
-            person.greet()
+            sut.greet()
             expect(logSpy).toHaveBeenCalledWith("Hello, my name is John Smith")
             logSpy.mockRestore()
         })
