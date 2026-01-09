@@ -9,9 +9,3 @@ export class Animal{
         console.log(this.taxRank)
     }
 }
-
-export class Dog extends Animal {
-    public speak(): void {
-        console.log("woof")
-    }
-}
