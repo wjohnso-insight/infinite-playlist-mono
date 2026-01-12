@@ -11,6 +11,10 @@ beforeEach(() => {
     sut = getSut()
 })
 
+afterEach(() => {
+    jest.restoreAllMocks()
+})
+
 describe('person', () => {
     describe('full name', () => {
         test('should be defined', () => {
@@ -27,7 +31,6 @@ describe('person', () => {
             const logSpy = jest.spyOn(console, 'log').mockImplementation(() => undefined)
             sut.greet()
             expect(logSpy).toHaveBeenCalledWith("Hello, my name is John Smith")
-            logSpy.mockRestore()
         })
     })
 })
