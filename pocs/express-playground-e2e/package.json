@@ -1,0 +1,26 @@
+{
+  "name": "@infinite-playlist-mono/express-playground-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "implicitDependencies": [
+      "@infinite-playlist-mono/express-playground"
+    ],
+    "targets": {
+      "e2e": {
+        "executor": "@nx/jest:jest",
+        "outputs": [
+          "{projectRoot}/test-output/jest/coverage"
+        ],
+        "options": {
+          "jestConfig": "pocs/express-playground-e2e/jest.config.cts",
+          "passWithNoTests": true
+        },
+        "dependsOn": [
+          "@infinite-playlist-mono/express-playground:build",
+          "@infinite-playlist-mono/express-playground:serve"
+        ]
+      }
+    }
+  }
+}
