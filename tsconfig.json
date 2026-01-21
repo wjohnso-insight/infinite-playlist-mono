@@ -5,6 +5,12 @@
   "references": [
     {
       "path": "./pocs/typescript-playground"
+    },
+    {
+      "path": "./pocs/express-playground-e2e"
+    },
+    {
+      "path": "./pocs/express-playground"
     }
   ]
 }
