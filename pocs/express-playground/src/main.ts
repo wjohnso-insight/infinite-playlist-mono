@@ -3,6 +3,7 @@
  * This is only a minimal backend to get started.
  */
 
+import 'dotenv/config'
 import express from 'express';
 import * as path from 'path';
 import { v1Router } from './routes/v1';
@@ -17,7 +18,7 @@ app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to express-playground!' });
 });
 
-const port = process.env.PORT || 3333;
+const port = process.env.PORT;
 const server = app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}/api`);
 });
