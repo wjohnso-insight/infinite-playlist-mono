@@ -74,6 +74,9 @@ Nx Console is an editor extension that enriches your developer experience. It le
 
 [Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
 
+## Environment Variables Setup
+Using the `.env.template` file as a reference, create a new `.env` file with the desired port number set (E.g. `PORT = 3333`)
+
 ## Useful links
 
 Learn more:
