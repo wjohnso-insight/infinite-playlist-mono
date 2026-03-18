@@ -41,6 +41,10 @@ export const spotifyCallbackController = async (req: Request, res: Response) => 
 
     const tokenData = (await tokenResponse.json()) as SpotifyTokenResponse
 
+    if (!tokenResponse.ok) {
+        return res.status(tokenResponse.status).json({ error: 'Failed to fetch user profile'})
+    }
+
     const userResponse = await fetch('https://api.spotify.com/v1/me', {
         headers: {
             Authorization: `Bearer ${tokenData.access_token}`,
