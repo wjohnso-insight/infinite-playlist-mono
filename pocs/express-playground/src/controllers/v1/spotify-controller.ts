@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { SpotifyTokenResponse } from '../../models/spotify'
+import { getToken } from '../../services/getToken'
 
 export const spotifyLoginController = (req: Request, res: Response) => {
     const params = new URLSearchParams({
@@ -22,28 +22,16 @@ export const spotifyCallbackController = async (req: Request, res: Response) => 
     }
 
     try {
-        const tokenResponse = await fetch('https://accounts.spotify.com/api/token', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            Authorization:
-                'Basic ' +
-                Buffer.from(
-                    `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
-                ).toString('base64'),
-            },
-            body: new URLSearchParams({
-                grant_type: 'authorization_code',
-                code,
-                redirect_uri: process.env.SPOTIFY_REDIRECT_URI ?? '',
-            }),
-        })
 
-    const tokenData = (await tokenResponse.json()) as SpotifyTokenResponse
+    const tokenData = await getToken(code)
 
-    if (!tokenResponse.ok) {
-        return res.status(tokenResponse.status).json({ error: 'Failed to fetch user profile'})
-    }
+    res.cookie('spotify_access_token', tokenData.access_token, {
+        httpOnly: true,
+        secure: false, // For production env, set to true
+        maxAge: tokenData.expires_in * 1000 
+    })
+
+    console.log(res.cookie)
 
     const userResponse = await fetch('https://api.spotify.com/v1/me', {
         headers: {
