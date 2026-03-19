@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { healthcheckController } from '../controllers/v1/well-known';
-import { spotifyCallbackController } from '../controllers/v1/spotifyController';
-import { spotifyLoginController } from '../controllers/v1/spotifyController';
+import { spotifyCallbackController } from '../controllers/v1/spotify-controller';
+import { spotifyLoginController } from '../controllers/v1/spotify-controller';
 
 export const v1Router = Router()
 
