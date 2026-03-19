@@ -8,6 +8,10 @@ import express from 'express';
 import * as path from 'path';
 import { v1Router } from './routes/v1';
 
+if (!process.env.SPOTIFY_CLIENT_ID || !process.env.SPOTIFY_CLIENT_SECRET || !process.env.SPOTIFY_REDIRECT_URI) {
+  throw new Error('Missing Spotify environment variables')
+}
+
 const app = express();
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
