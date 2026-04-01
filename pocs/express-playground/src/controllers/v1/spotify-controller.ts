@@ -14,37 +14,33 @@ export const spotifyLoginController = (req: Request, res: Response) => {
 }
 
 export const spotifyCallbackController = async (req: Request, res: Response) => {
-    const code = req.query.code
-
-    // Type checking for code variable
-    if (typeof(code) != 'string' || code.trim() == '') {
-        return res.status(400).json({ error: 'Invalid or missing auth code'})
-    }
+    const code = res.locals.spotifyCallbackQuery.code as string
 
     try {
 
-    const tokenData = await getToken(code)
+        const tokenData = await getToken(code)
 
-    res.cookie('spotify_access_token', tokenData.access_token, {
-        httpOnly: true,
-        secure: false, // For production env, set to true
-        maxAge: tokenData.expires_in * 1000 
-    })
-
-    console.log(res.cookie)
-
-    const userResponse = await fetch('https://api.spotify.com/v1/me', {
-        headers: {
-            Authorization: `Bearer ${tokenData.access_token}`,
-        },
-    })
-
-    const profile = await userResponse.json() 
-    return res.status(200).json(profile)
-    
-    } catch(error) {
-        return res.status(500).json({ 
-            error: 'Unexpected error during Spotify callback', 
-            details: error instanceof Error ? error.message: 'Unknown error',
+        res.cookie('spotify_access_token', tokenData.access_token, {
+            httpOnly: true,
+            secure: false, // For production env, set to true
+            maxAge: tokenData.expires_in * 1000
         })
-    }}
+
+        console.log(res.cookie)
+
+        const userResponse = await fetch('https://api.spotify.com/v1/me', {
+            headers: {
+                Authorization: `Bearer ${tokenData.access_token}`,
+            },
+        })
+
+        const profile = await userResponse.json()
+        return res.status(200).json(profile)
+
+    } catch (error) {
+        return res.status(500).json({
+            error: 'Unexpected error during Spotify callback',
+            details: error instanceof Error ? error.message : 'Unknown error',
+        })
+    }
+}
